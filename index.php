@@ -18,12 +18,13 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) :
 			$current_date = date( 'Y-m-d H:i:s' );
+			$moblog = get_category_by_slug( 'moblog' )->term_id;
 
 			while ( have_posts() ) : the_post();
 				$prev_date = $post->post_date;
 
 				$query_args = [
-					'category__in' => [2],
+					'category__in' => [ $moblog ],
 					'date_query' => [
 						'before' => $current_date,
 						'after' => $prev_date,

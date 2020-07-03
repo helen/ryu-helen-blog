@@ -1,0 +1,154 @@
+/*
+ Theme Name:   Ryu Helen Blog
+ Theme URI:    https://helen.blog
+ Description:  Ryu child theme for helen.blog
+ Author:       Helen H-S
+ Author URI:   https://helen.blog
+ Template:     ryu
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+.entry-meta .author,
+.entry-meta .entry-format,
+.entry-header .categories-links,
+#infinite-footer,
+.format-image .jetpack-likes-widget-wrapper {
+	display: none;
+}
+
+body {
+	font-size: 21px;
+}
+
+blockquote p {
+	font-size: 30px;
+}
+
+.site-title {
+	font-size: 28px;
+}
+
+.site-description {
+	line-height: 2;
+	font-size: 18px;
+}
+
+.entry-title {
+	font-size: 56px;
+}
+
+.format-image .entry-title {
+	max-width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 40px;
+	text-align: center;
+}
+
+.format-image .entry-meta {
+	text-align: center;
+}
+
+.format-image .entry-format-badge {
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.entry-content table.tablepress,
+.entry-content table.tablepress td {
+	border: none;
+}
+
+.entry-content .tablepress td {
+	padding-left: 0;
+}
+
+.wp-block-image figcaption {
+	font-size: .7em;
+	text-align: center;
+}
+
+.image-grid {
+	margin: 4em 0 0;
+}
+
+.image-grid img {
+	display: inline-block;
+	width: 25%;
+	max-width: 150px;
+	height: auto;
+	float: left;
+}
+
+@media screen and (min-width: 888px) {
+	.format-video .entry-title {
+		font-size: 30px;
+		line-height: 1.3;
+	}
+	
+	.format-image .entry-meta span + span:before {
+		content: " | ";
+	}
+	
+	.format-image .entry-meta {
+		float: none;
+		width: auto;
+		margin: 34px 0 0;
+		padding: 8px 0 9px;
+		text-align: center;
+	}
+	
+	.format-image .entry-meta span {
+		border-bottom: none;
+		display: inline;
+		padding: 0;
+	}
+	
+	.format-image .entry-meta span:first-child {
+		border-top: none;
+	}
+	
+	.format-image .entry-meta .author,
+	.format-image .entry-meta .entry-format {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	body, button, input, select, textarea {
+		font-size: 18px;
+		line-height: 1.4166666667;
+	}
+	
+	blockquote p {
+		font-size: 24px;
+		line-height: 1.3;
+	}
+	
+	blockquote cite {
+		font-size: 16px;
+	}
+	
+	.wrap {
+		max-width: calc(100% - 68px);
+	}
+	
+	.entry-title,
+	.format-image .entry-title {
+		font-size: 38px;
+	}
+	
+	.format-image .entry-title {
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 456px) {
+	.entry-title,
+						.format-image .entry-title {
+		font-size: 30px;
+	}
+}

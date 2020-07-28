@@ -17,8 +17,30 @@ get_header(); ?>
 		<div id="content" class="site-content" role="main">
 
 		<?php if ( have_posts() ) :
-			$current_date = date( 'Y-m-d H:i:s' );
 			$moblog = get_category_by_slug( 'moblog' )->term_id;
+
+			if ( is_paged() ) {
+				// Get the date of the last post before this one
+				$perpage = get_option( 'posts_per_page' );
+				$paged = get_query_var('paged');
+
+				$offset = ( $perpage * ( $paged - 1 ) ) - 1;
+
+				$query_args = [
+					'category__not_in' => [ $moblog ],
+					'offset' => $offset,
+					'posts_per_page' => 1,
+					'update_post_term_cache' => false,
+					'update_post_meta_cache' => false,
+					'no_found_rows' => true,
+				];
+
+				$prev_post = new WP_Query( $query_args );
+
+				$current_date = $prev_post->posts[0]->post_date;
+			} else {
+				$current_date = date( 'Y-m-d H:i:s' );
+			}
 
 			while ( have_posts() ) : the_post();
 				$prev_date = $post->post_date;
@@ -30,6 +52,7 @@ get_header(); ?>
 						'after' => $prev_date,
 					],
 					'posts_per_page' => 500,
+					'no_found_rows' => true,
 				];
 
 				$images = new WP_Query( $query_args );
@@ -37,7 +60,7 @@ get_header(); ?>
 			?>
 				<div class="image-grid">
 				<?php while( $images->have_posts() ) : $images->the_post(); ?>
-					<a href="<?php the_permalink(); ?>"><?php echo get_the_post_thumbnail(); ?></a>
+					<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'thumbnail' ); ?></a>
 				<?php endwhile; ?>
 	<span class="clear"></span>
 				</div>

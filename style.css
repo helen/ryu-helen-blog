@@ -79,16 +79,6 @@ blockquote p {
 	text-align: center;
 }
 
-.image-grid a {
-	display: grid;
-	place-items: center;
-}
-
-.image-grid a::before {
-	content: "";
-	display: block;
-}
-
 .image-grid img {
 	width: 100%;
 	height: 100%;
